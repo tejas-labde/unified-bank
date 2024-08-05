@@ -1,0 +1,16 @@
+<div class="login-page-container">
+    <h2>Login Page</h2>
+    <div class="forms-container">
+        <form [formGroup]="login" (ngSubmit)="onSubmit()">
+            <div class="field-container">
+                <span>Email</span>
+                <input type="text" class="field" formControlName="email">
+            </div>
+            <div class="field-container">
+                <span>Password</span>
+                <input type="password" class="field" formControlName="password">
+            </div>
+            <button type="submit" class="login-btn" [disabled]="login.invalid">Login</button>
+        </form>
+    </div>
+</div>

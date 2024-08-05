@@ -1,0 +1,47 @@
+<div class="dashboard-container">
+    <!-- navigation bar -->
+     <div class="btn-container">
+        <button class="logout-btn" (click)="onLogoutClick()">Logout</button>
+     </div>
+    <div class="cards-container">
+        <div *ngFor="let item of bankAccounts">
+            <div class="bank-card">
+                <h4>Bank Name: {{item.bank}}</h4>
+                <p>Account Number: {{item.accountNumber}}</p>
+                <p>Current Balance:{{item.balance}}</p>
+                <button class="details" (click)="onItemClick(item)">View Details</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="transactions-container" *ngIf="itemClicked">
+        <div class="details-container">
+            <h5>Bank Name: {{clickedItem.bank}}</h5>
+            <p>Account Number: {{clickedItem.accountNumber}}</p>
+            <p>Current Balance:{{clickedItem.balance}}</p>
+        </div>
+        <h3>Last 5 transaction data</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let transaction of clickedItem.transactions">
+                        <tr>
+                            <td>{{transaction.amount}}</td>
+                            <td>{{transaction.date}}</td>
+                            <td>{{transaction.type}}</td>
+                            <td>{{transaction.description}}</td>
+    
+                        </tr>
+    
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
